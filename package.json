@@ -1,0 +1,24 @@
+{
+  "name": "first_c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "first": "^0.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel-bundler": "^1.12.5"
+  }
+}

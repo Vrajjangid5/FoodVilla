@@ -1,0 +1,206 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-items ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0; /* Added to remove default padding */
+    margin: 0; /* Added to remove default margin */
+}
+
+.nav-items ul li {
+    padding: 10px;
+}
+
+.nav-items ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.logo {
+    height: 50px;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Grid container for cards and shimmer */
+.restronent-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.Card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 300px; /* Set max width to ensure consistency */
+    margin: 0 auto; /* Center card if only one */
+}
+
+.Card img {
+    width: 100%;
+    max-height: 200px; /* Set a maximum height for images */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+    border-bottom: 1px solid #ccc;
+}
+
+.Card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.Card h3 {
+    font-size: 16px;
+    color: #666;
+}
+
+.Card h4 {
+    font-size: 18px;
+    color: #f39c12;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+}
+
+/* Shimmer UI styles */
+.shimmer-card {
+    width: 100%;
+    height: 250px; /* Adjusted height to be more consistent with Card */
+    background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 20%, #f0f0f0 40%, #f0f0f0 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Media Queries */
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-items ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container {
+        margin: 10px 0;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .Card, .shimmer-card {
+        height: 50%;
+        max-width: 100%; /* Ensure full width on smaller screens */
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .Card, .shimmer-card {
+        height: auto;
+        padding: 10px;
+    }
+
+    .Card h2 {
+        font-size: 18px;
+    }
+
+    .Card h3 {
+        font-size: 14px;
+    }
+
+    .Card h4 {
+        font-size: 16px;
+    }
+}
+
+
+/*# sourceMappingURL=/App.f684dadd.css.map */
