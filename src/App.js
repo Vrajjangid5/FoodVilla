@@ -96,12 +96,12 @@ const AppLayout=()=>{
             links
             copyright
         */
-       <>
+       <div>
         <HeaderContent></HeaderContent>
        {/* {outlet} */}
        <Outlet></Outlet>
        <Footer/>
-       </>
+       </div>
     );
 }
 
