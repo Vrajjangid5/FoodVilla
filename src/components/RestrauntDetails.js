@@ -5,6 +5,7 @@ import { IMG_CDN_URL } from '../contants'; // Ensure the path to your constants 
 export const RestrauntDetails = () => {
     const { id } = useParams();
     const [restaurant, setRestaurant] = useState(null);
+    const [menu, setMenu] = useState({ itemCards: [] }); // Initialize as an object with an empty itemCards array
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -24,12 +25,16 @@ export const RestrauntDetails = () => {
             }
 
             const json = await response.json();
-            console.log('JSON response:', json); // Log JSON response to verify its structure
 
-            // Adjust this line according to the actual JSON structure returned by the API
-            const restaurantData = json?.data?.cards[2]?.card?.card?.info;
+            const restaurantData = json?.data;
+            // Corrected extraction of menu data from JSON response
+            const menuData = json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
+
+            console.log('Menu data:', menuData);
+
             if (restaurantData) {
                 setRestaurant(restaurantData);
+                setMenu(menuData); // Set the entire menu object
             } else {
                 setError('Restaurant data not found');
             }
@@ -58,18 +63,28 @@ export const RestrauntDetails = () => {
 
     // Render restaurant details
     return (
-        <div>
-            <h2>Restaurant ID: {id}</h2>
-            <h2>{restaurant.name}</h2>
-            {restaurant.cloudinaryImageId && (
+        <div className='MENU'>
+           <div>
+           <h2>Restaurant ID: {id}</h2>
+            <h2>{restaurant.cards[2]?.card?.card?.info.name}</h2>
+            {restaurant.cards[2]?.card?.card?.info.cloudinaryImageId && (
                 <img
-                    src={`${IMG_CDN_URL}${restaurant.cloudinaryImageId}`}
-                    alt={restaurant.name}
+                    src={`${IMG_CDN_URL}${restaurant.cards[2]?.card?.card?.info.cloudinaryImageId}`}
+                    alt={restaurant.cards[2]?.card?.card?.info.name}
                 />
             )}
-            <h3>{restaurant.locality}</h3>
-            <h3>{restaurant.city}</h3>
-            <h3>{restaurant.costForTwoMsg}</h3>
+            <h3>{restaurant.cards[2]?.card?.card?.info.locality}</h3>
+            <h3>{restaurant.cards[2]?.card?.card?.info.city}</h3>
+            <h3>{restaurant.cards[2]?.card?.card?.info.costForTwoMsg}</h3>
+           </div>
+            <div>
+                <h1>Menu</h1>
+                <ul>
+                    {menu.itemCards?.map((item) => (
+                        <li key={item.card.info.id}>{item.card.info.name}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

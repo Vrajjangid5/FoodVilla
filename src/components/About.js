@@ -11,7 +11,7 @@ export const About = () => {
             {" "}
             this t=is the router of about us page
             <ProfileComonent  name={"Vraj Jnagid"}/>
-            <Profile name={"Vraj Jnagid"}/>
+            {/* <Profile name={"Vraj Jnagid"}/> */}
         </p>
     </div>
   )

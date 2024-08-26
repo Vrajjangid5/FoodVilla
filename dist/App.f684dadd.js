@@ -37603,6 +37603,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.restorent_list = exports.IMG_CDN_URL = void 0;
 var IMG_CDN_URL = exports.IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
+// https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING
 var restorent_list = exports.restorent_list = [{
   "info": {
     "id": "689277",
@@ -38338,17 +38339,18 @@ var _react = _interopRequireDefault(require("react"));
 var _contants = require("../contants");
 var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-var RestroCard = function RestroCard(_ref) {
+function RestroCard(_ref) {
   var name = _ref.name,
     cloudinaryImageId = _ref.cloudinaryImageId,
     cuisines = _ref.cuisines,
-    avgRating = _ref.avgRating;
+    avgRating = _ref.avgRating,
+    availability = _ref.availability;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Card"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _contants.IMG_CDN_URL + cloudinaryImageId
-  }), /*#__PURE__*/_react.default.createElement("h2", null, name), /*#__PURE__*/_react.default.createElement("h3", null, cuisines.join(",")), /*#__PURE__*/_react.default.createElement("h4", null, avgRating, "\u2B50"));
-};
+  }), /*#__PURE__*/_react.default.createElement("h2", null, name), /*#__PURE__*/_react.default.createElement("h3", null, cuisines.join(" , ")), /*#__PURE__*/_react.default.createElement("h4", null, avgRating, "\u2B50"), /*#__PURE__*/_react.default.createElement("h3", null, availability.opened === true ? "opened" : "close"), /*#__PURE__*/_react.default.createElement("p", null));
+}
 var _default = exports.default = RestroCard;
 },{"react":"node_modules/react/index.js","../contants":"src/contants.js","react-router-dom":"node_modules/react-router-dom/dist/index.js"}],"src/components/Shimmer.js":[function(require,module,exports) {
 "use strict";
@@ -38438,15 +38440,15 @@ var Body = function Body() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+            return fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.797977&lng=75.8192578&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
           case 3:
             data = _context.sent;
             _context.next = 6;
             return data.json();
           case 6:
             json = _context.sent;
-            setALLRestronentes((json === null || json === void 0 || (_json$data = json.data) === null || _json$data === void 0 || (_json$data = _json$data.cards[2]) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 || (_json$data = _json$data.gridElements) === null || _json$data === void 0 || (_json$data = _json$data.infoWithStyle) === null || _json$data === void 0 ? void 0 : _json$data.restaurants) || []);
-            setALLFilteredRestronentes((json === null || json === void 0 || (_json$data2 = json.data) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.cards[2]) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.card) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.card) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.gridElements) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.infoWithStyle) === null || _json$data2 === void 0 ? void 0 : _json$data2.restaurants) || []);
+            setALLRestronentes((json === null || json === void 0 || (_json$data = json.data) === null || _json$data === void 0 || (_json$data = _json$data.cards[4]) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 || (_json$data = _json$data.gridElements) === null || _json$data === void 0 || (_json$data = _json$data.infoWithStyle) === null || _json$data === void 0 ? void 0 : _json$data.restaurants) || []);
+            setALLFilteredRestronentes((json === null || json === void 0 || (_json$data2 = json.data) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.cards[4]) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.card) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.card) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.gridElements) === null || _json$data2 === void 0 || (_json$data2 = _json$data2.infoWithStyle) === null || _json$data2 === void 0 ? void 0 : _json$data2.restaurants) || []);
             _context.next = 16;
             break;
           case 11:
@@ -38463,7 +38465,7 @@ var Body = function Body() {
     }));
     return _getRestaurats.apply(this, arguments);
   }
-  return ALLrestronentes.length === 0 ? /*#__PURE__*/_react.default.createElement(_Shimmer.default, null) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+  return (ALLrestronentes === null || ALLrestronentes === void 0 ? void 0 : ALLrestronentes.length) === 0 ? /*#__PURE__*/_react.default.createElement(_Shimmer.default, null) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -38612,8 +38614,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var About = exports.About = function About() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "About us page"), /*#__PURE__*/_react.default.createElement("p", null, " ", "this t=is the router of about us page", /*#__PURE__*/_react.default.createElement(_Profile.default, {
     name: "Vraj Jnagid"
-  }), /*#__PURE__*/_react.default.createElement(_ProfileClass.default, {
-    name: "Vraj Jnagid"
   })));
 };
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./ProfileClass":"src/components/ProfileClass.js","./Profile":"src/components/Profile.js"}],"src/components/ErrorPage.js":[function(require,module,exports) {
@@ -38668,20 +38668,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 // Ensure the path to your constants file is correct
 
 var RestrauntDetails = exports.RestrauntDetails = function RestrauntDetails() {
+  var _restaurant$cards$, _restaurant$cards$2, _restaurant$cards$3, _restaurant$cards$4, _restaurant$cards$5, _restaurant$cards$6, _restaurant$cards$7, _menu$itemCards;
   var _useParams = (0, _reactRouterDom.useParams)(),
     id = _useParams.id;
   var _useState = (0, _react.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     restaurant = _useState2[0],
     setRestaurant = _useState2[1];
-  var _useState3 = (0, _react.useState)(true),
+  var _useState3 = (0, _react.useState)({
+      itemCards: []
+    }),
     _useState4 = _slicedToArray(_useState3, 2),
-    loading = _useState4[0],
-    setLoading = _useState4[1];
-  var _useState5 = (0, _react.useState)(null),
+    menu = _useState4[0],
+    setMenu = _useState4[1]; // Initialize as an object with an empty itemCards array
+  var _useState5 = (0, _react.useState)(true),
     _useState6 = _slicedToArray(_useState5, 2),
-    error = _useState6[0],
-    setError = _useState6[1];
+    loading = _useState6[0],
+    setLoading = _useState6[1];
+  var _useState7 = (0, _react.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    error = _useState8[0],
+    setError = _useState8[1];
   (0, _react.useEffect)(function () {
     getRestroInfo();
   }, [id]);
@@ -38690,7 +38697,7 @@ var RestrauntDetails = exports.RestrauntDetails = function RestrauntDetails() {
   } // Show loading spinner while fetching data
   function _getRestroInfo() {
     _getRestroInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var _json$data, response, json, restaurantData;
+      var _json$data, response, json, restaurantData, menuData;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -38710,31 +38717,31 @@ var RestrauntDetails = exports.RestrauntDetails = function RestrauntDetails() {
             return response.json();
           case 9:
             json = _context.sent;
-            console.log('JSON response:', json); // Log JSON response to verify its structure
-
-            // Adjust this line according to the actual JSON structure returned by the API
-            restaurantData = json === null || json === void 0 || (_json$data = json.data) === null || _json$data === void 0 || (_json$data = _json$data.cards[2]) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 ? void 0 : _json$data.info;
+            restaurantData = json === null || json === void 0 ? void 0 : json.data; // Corrected extraction of menu data from JSON response
+            menuData = (json === null || json === void 0 || (_json$data = json.data) === null || _json$data === void 0 || (_json$data = _json$data.cards[5]) === null || _json$data === void 0 || (_json$data = _json$data.groupedCard) === null || _json$data === void 0 || (_json$data = _json$data.cardGroupMap) === null || _json$data === void 0 || (_json$data = _json$data.REGULAR) === null || _json$data === void 0 || (_json$data = _json$data.cards[1]) === null || _json$data === void 0 || (_json$data = _json$data.card) === null || _json$data === void 0 ? void 0 : _json$data.card) || {};
+            console.log('Menu data:', menuData);
             if (restaurantData) {
               setRestaurant(restaurantData);
+              setMenu(menuData); // Set the entire menu object
             } else {
               setError('Restaurant data not found');
             }
-            _context.next = 19;
+            _context.next = 20;
             break;
-          case 15:
-            _context.prev = 15;
+          case 16:
+            _context.prev = 16;
             _context.t0 = _context["catch"](0);
             console.error('Error fetching restaurant info:', _context.t0);
             setError(_context.t0.message);
-          case 19:
-            _context.prev = 19;
+          case 20:
+            _context.prev = 20;
             setLoading(false); // End loading state
-            return _context.finish(19);
-          case 22:
+            return _context.finish(20);
+          case 23:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 15, 19, 22]]);
+      }, _callee, null, [[0, 16, 20, 23]]);
     }));
     return _getRestroInfo.apply(this, arguments);
   }
@@ -38753,15 +38760,25 @@ var RestrauntDetails = exports.RestrauntDetails = function RestrauntDetails() {
   }
 
   // Render restaurant details
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Restaurant ID: ", id), /*#__PURE__*/_react.default.createElement("h2", null, restaurant.name), restaurant.cloudinaryImageId && /*#__PURE__*/_react.default.createElement("img", {
-    src: "".concat(_contants.IMG_CDN_URL).concat(restaurant.cloudinaryImageId),
-    alt: restaurant.name
-  }), /*#__PURE__*/_react.default.createElement("h3", null, restaurant.locality), /*#__PURE__*/_react.default.createElement("h3", null, restaurant.city), /*#__PURE__*/_react.default.createElement("h3", null, restaurant.costForTwoMsg));
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "MENU"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Restaurant ID: ", id), /*#__PURE__*/_react.default.createElement("h2", null, (_restaurant$cards$ = restaurant.cards[2]) === null || _restaurant$cards$ === void 0 || (_restaurant$cards$ = _restaurant$cards$.card) === null || _restaurant$cards$ === void 0 || (_restaurant$cards$ = _restaurant$cards$.card) === null || _restaurant$cards$ === void 0 ? void 0 : _restaurant$cards$.info.name), ((_restaurant$cards$2 = restaurant.cards[2]) === null || _restaurant$cards$2 === void 0 || (_restaurant$cards$2 = _restaurant$cards$2.card) === null || _restaurant$cards$2 === void 0 || (_restaurant$cards$2 = _restaurant$cards$2.card) === null || _restaurant$cards$2 === void 0 ? void 0 : _restaurant$cards$2.info.cloudinaryImageId) && /*#__PURE__*/_react.default.createElement("img", {
+    src: "".concat(_contants.IMG_CDN_URL).concat((_restaurant$cards$3 = restaurant.cards[2]) === null || _restaurant$cards$3 === void 0 || (_restaurant$cards$3 = _restaurant$cards$3.card) === null || _restaurant$cards$3 === void 0 || (_restaurant$cards$3 = _restaurant$cards$3.card) === null || _restaurant$cards$3 === void 0 ? void 0 : _restaurant$cards$3.info.cloudinaryImageId),
+    alt: (_restaurant$cards$4 = restaurant.cards[2]) === null || _restaurant$cards$4 === void 0 || (_restaurant$cards$4 = _restaurant$cards$4.card) === null || _restaurant$cards$4 === void 0 || (_restaurant$cards$4 = _restaurant$cards$4.card) === null || _restaurant$cards$4 === void 0 ? void 0 : _restaurant$cards$4.info.name
+  }), /*#__PURE__*/_react.default.createElement("h3", null, (_restaurant$cards$5 = restaurant.cards[2]) === null || _restaurant$cards$5 === void 0 || (_restaurant$cards$5 = _restaurant$cards$5.card) === null || _restaurant$cards$5 === void 0 || (_restaurant$cards$5 = _restaurant$cards$5.card) === null || _restaurant$cards$5 === void 0 ? void 0 : _restaurant$cards$5.info.locality), /*#__PURE__*/_react.default.createElement("h3", null, (_restaurant$cards$6 = restaurant.cards[2]) === null || _restaurant$cards$6 === void 0 || (_restaurant$cards$6 = _restaurant$cards$6.card) === null || _restaurant$cards$6 === void 0 || (_restaurant$cards$6 = _restaurant$cards$6.card) === null || _restaurant$cards$6 === void 0 ? void 0 : _restaurant$cards$6.info.city), /*#__PURE__*/_react.default.createElement("h3", null, (_restaurant$cards$7 = restaurant.cards[2]) === null || _restaurant$cards$7 === void 0 || (_restaurant$cards$7 = _restaurant$cards$7.card) === null || _restaurant$cards$7 === void 0 || (_restaurant$cards$7 = _restaurant$cards$7.card) === null || _restaurant$cards$7 === void 0 ? void 0 : _restaurant$cards$7.info.costForTwoMsg)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Menu"), /*#__PURE__*/_react.default.createElement("ul", null, (_menu$itemCards = menu.itemCards) === null || _menu$itemCards === void 0 ? void 0 : _menu$itemCards.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: item.card.info.id
+    }, item.card.info.name);
+  }))));
 };
 var _default = exports.default = RestrauntDetails;
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../contants":"src/contants.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _client = _interopRequireDefault(require("react-dom/client"));
 var _HeaderContent = _interopRequireDefault(require("./components/HeaderContent"));
@@ -38844,7 +38861,7 @@ var AppLayout = function AppLayout() {
          links
          copyright
      */
-    _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_HeaderContent.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Outlet, null), /*#__PURE__*/_react.default.createElement(_Footer.default, null))
+    _react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_HeaderContent.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Outlet, null), /*#__PURE__*/_react.default.createElement(_Footer.default, null))
   );
 };
 var appRouter = (0, _reactRouterDom.createBrowserRouter)([{
@@ -38876,7 +38893,8 @@ var root = _client.default.createRoot(document.getElementById("root"));
 root.render( /*#__PURE__*/_react.default.createElement(_reactRouterDom.RouterProvider, {
   router: appRouter
 }));
-},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/HeaderContent":"src/components/HeaderContent.js","./components/Body":"src/components/Body.js","./contants":"src/contants.js","./components/Footer":"src/components/Footer.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./components/About":"src/components/About.js","./components/ErrorPage":"src/components/ErrorPage.js","./components/Contact":"src/components/Contact.js","./components/RestrauntDetails":"src/components/RestrauntDetails.js","./components/Profile":"src/components/Profile.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var _default = exports.default = AppLayout;
+},{"react":"node_modules/react/index.js","react-dom/client":"node_modules/react-dom/client.js","./components/HeaderContent":"src/components/HeaderContent.js","./components/Body":"src/components/Body.js","./contants":"src/contants.js","./components/Footer":"src/components/Footer.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./components/About":"src/components/About.js","./components/ErrorPage":"src/components/ErrorPage.js","./components/Contact":"src/components/Contact.js","./components/RestrauntDetails":"src/components/RestrauntDetails.js","./components/Profile":"src/components/Profile.js"}],"C:/Users/vrajj/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -38901,7 +38919,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53928" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57790" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -39045,5 +39063,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/App.js"], null)
+},{}]},{},["C:/Users/vrajj/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/App.js"], null)
 //# sourceMappingURL=/App.f684dadd.js.map

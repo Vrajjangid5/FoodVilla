@@ -124,6 +124,9 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.MENU{
+    display: flex;
+}
 
 /* Shimmer animation */
 @keyframes shimmer {
@@ -163,6 +166,7 @@ footer {
         max-width: 100%; /* Ensure full width on smaller screens */
     }
 }
+
 
 /* Mobile phones */
 @media (max-width: 480px) {

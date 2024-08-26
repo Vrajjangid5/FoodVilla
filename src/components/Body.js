@@ -29,10 +29,10 @@ const Body = () => {
 //   }
 async function getRestaurats() {
   try {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.797977&lng=75.8192578&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data.json();
-      setALLRestronentes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-      setALLFilteredRestronentes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+      setALLRestronentes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+      setALLFilteredRestronentes(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
   } catch (error) {
       console.error("Failed to fetch restaurants", error);
       setALLRestronentes([]);
@@ -41,7 +41,8 @@ async function getRestaurats() {
 }
 
 
-  return ALLrestronentes.length === 0 ? <Shimmer /> : (
+
+  return ALLrestronentes?.length === 0 ? <Shimmer /> : (
       <>
           <div className="search-container">
               <input
