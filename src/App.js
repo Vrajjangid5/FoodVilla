@@ -106,36 +106,37 @@ const AppLayout=()=>{
 }
 
 
-const appRouter=createBrowserRouter([
+const appRouter = createBrowserRouter([
     {
-        path:"/",
-        element:<AppLayout/>,
-        errorElement:<ErrorPage/>,
-        children:[
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/",
+          element: <Body />
+        },
+        {
+          path: "/about",
+          element: <About />,
+          children: [
             {
-                path:"/",
-                element:<Body/>
-            },
-            {
-                path:"/about",
-                element:<About/>,
-                children:[{
-                    path:"profile",
-                    element:<Profile/>
-                }]
-            },
-            {
-                path:"/contact",
-                element:<Contact/>
-            },
-            {
-                path:"/restaurant/:id",
-                element:<RestrauntDetails/>
+              path: "profile",  // Relative path, not absolute
+              element: <Profile />
             }
-        ]
-    },
-    
-])
+          ]
+        },
+        {
+          path: "/contact",
+          element: <Contact />
+        },
+        {
+          path: "/restaurant/:id",
+          element: <RestrauntDetails />
+        }
+      ]
+    }
+  ]);
 
 
 

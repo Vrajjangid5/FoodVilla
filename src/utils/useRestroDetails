@@ -1,0 +1,44 @@
+import { useEffect, useState } from 'react';
+
+const useRestroDetails = (id) => {
+    const [restaurant, setRestaurant] = useState(null);
+    const [menu, setMenu] = useState({ itemCards: [] });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getRestroInfo = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(
+                    `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.95250&lng=75.71050&restaurantId=${id}`
+                );
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const json = await response.json();
+                const restaurantData = json?.data;
+                const menuData = json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
+
+                if (restaurantData) {
+                    setRestaurant(restaurantData);
+                    setMenu(menuData);
+                } else {
+                    setError('Restaurant data not found');
+                }
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getRestroInfo();
+    }, [id]);
+
+    return { restaurant, menu, loading, error };
+};
+
+export default useRestroDetails;

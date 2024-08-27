@@ -57,6 +57,7 @@ export const RestrauntDetails = () => {
     }
 
     // Display message if no restaurant data is available
+    
     if (!restaurant) {
         return <div>No restaurant data available.</div>;
     }

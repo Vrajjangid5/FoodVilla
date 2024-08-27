@@ -3,10 +3,7 @@ import { restorent_list } from "../contants";
 import RestroCard from "./RestroCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
-function filterData(searchInput,restronentes){
-    return restronentes.filter((restro)=>restro?.info?.name?.toLowerCase()?.includes(searchInput.toLowerCase()));
-}
+import { FilterData } from "../utils/Helper";
 
 
 const Body = () => {
@@ -55,7 +52,7 @@ async function getRestaurats() {
               <button
                   className="search-btn"
                   onClick={() => {
-                      const data = filterData(searchInput, ALLrestronentes);
+                      const data = FilterData(searchInput, ALLrestronentes);
                       setALLFilteredRestronentes(data);
                   }}
               >
