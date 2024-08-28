@@ -6,7 +6,7 @@ const Heading=()=>(
    <Link to="/">
         <img 
     alt="logo"
-    className="logo"
+    className="h-28 pl-2"
     // src="https://lh3.googleusercontent.com/p/AF1QipO_6cTc3QdC9L2vAOyCkUPG-G-9YeFxo3YiDu3R=w1080-h608-p-no-v0" />
     src={logoo}
     />
@@ -24,22 +24,18 @@ const HeaderContent=()=>
 const [isLogin,setLogin]=useState(false);
 return (
 
-   
-
-
-    <div className="header">
+    <div className="flex justify-between bg-gray-300 shadow-lg">
         <Heading/>
         <div className="nav-items">
-            <ul>
-                <Link>
-                <li>Home</li>
+            <ul className='flex py-10'>  <Link>
+                <li className='px-2'>Home</li>
                 </Link>
                 <Link to="/about">
-                    <li>About</li>
+                    <li className='px-2'>About</li>
                 </Link>
                 
-                <Link to="/contact"><li>Contact</li></Link>
-                <Link><li>Cart</li></Link>
+                <Link to="/contact"><li className='px-2'>Contact</li></Link>
+                <Link to="/instamart"><li className='px-2'  >Cart</li></Link>
                 
             </ul>
 

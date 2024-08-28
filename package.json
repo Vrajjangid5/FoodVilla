@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "first": "^0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,6 +20,8 @@
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10"
   }
 }

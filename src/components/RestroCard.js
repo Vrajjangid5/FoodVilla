@@ -7,10 +7,10 @@ function RestroCard({
     name, cloudinaryImageId, cuisines, avgRating,availability
 }) {
     return (
-        <div className="Card">
+        <div className="Card w-[200px] p-2 m-2 shadow-xl rounded-sm">
             <img
                 src={IMG_CDN_URL + cloudinaryImageId} />
-            <h2>{name}</h2>
+            <h2 className="font-bold text-xl ">{name}</h2>
             <h3>
                 {cuisines.join(" , ")}
             </h3>

@@ -4,6 +4,7 @@ import RestroCard from "./RestroCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { FilterData } from "../utils/Helper";
+import useOnline from "../utils/useOnline";
 
 
 const Body = () => {
@@ -37,20 +38,23 @@ async function getRestaurats() {
   }
 }
 
-
+const isOnline=useOnline();
+if(!isOnline){
+    return <h1>You are offline</h1>
+}
 
   return ALLrestronentes?.length === 0 ? <Shimmer /> : (
       <>
-          <div className="search-container">
+          <div className="search-container p-5 bg-gray-300 my-5">
               <input
                   type="text"
-                  className="search-input"
+                  className="focus:bg-neutral-600 p-2 m-2 text-white rounded-md"
                   placeholder="search"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
               />
               <button
-                  className="search-btn"
+                  className="search-btn p-2 m-2 bg-purple-900 text-white hover:bg-orange-700 rounded-lg "
                   onClick={() => {
                       const data = FilterData(searchInput, ALLrestronentes);
                       setALLFilteredRestronentes(data);
@@ -59,7 +63,7 @@ async function getRestaurats() {
                   search
               </button>
           </div>
-          <div className="restronent-list">
+          <div className="restronent-list flex flex-wrap">
               {ALLFilterdrestronentes.map((resttorent) => (
                   <Link to={"/restaurant/" + resttorent.info.id} key={resttorent.info.id}>
                       <RestroCard {...resttorent.info} />
