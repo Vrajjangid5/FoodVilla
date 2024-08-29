@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IMG_CDN_URL } from '../contants'; // Ensure the path to your constants file is correct
+import { addItem } from '../utils/cartSlice';
+import { useDispatch } from 'react-redux';
 
 export const RestrauntDetails = () => {
     const { id } = useParams();
@@ -61,10 +63,15 @@ export const RestrauntDetails = () => {
     if (!restaurant) {
         return <div>No restaurant data available.</div>;
     }
+    const dispatch=useDispatch();
+
+   const handleItem=(item)=>{
+        dispatch(addItem(item))
+   }
 
     // Render restaurant details
     return (
-        <div className='MENU'>
+        <div className='MENU flex'>
            <div>
            <h2>Restaurant ID: {id}</h2>
             <h2>{restaurant.cards[2]?.card?.card?.info.name}</h2>
@@ -78,11 +85,13 @@ export const RestrauntDetails = () => {
             <h3>{restaurant.cards[2]?.card?.card?.info.city}</h3>
             <h3>{restaurant.cards[2]?.card?.card?.info.costForTwoMsg}</h3>
            </div>
-            <div>
+            
+
+            <div className='p-2 m-5'>
                 <h1>Menu</h1>
                 <ul>
                     {menu.itemCards?.map((item) => (
-                        <li key={item.card.info.id}>{item.card.info.name}</li>
+                        <li key={item.card.info.id}>{item.card.info.name} <button className="p-2 m-2 bg-green-600" onClick={()=>handleItem(item.card.info)}>Add</button></li>
                     ))}
                 </ul>
             </div>

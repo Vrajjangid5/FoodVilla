@@ -13,7 +13,10 @@ import { RestrauntDetails } from "./components/RestrauntDetails";
 import { Profile } from "./components/Profile";
 // import InstaMart from "./components/InstaMart";
 import Shimmer from "./components/Shimmer";
- /* //header
+import Cart from "./components/Cart";
+import { Provider } from "react-redux";
+import Store from "./utils/Store"; 
+/* //header
             logo
             nav items
             cart
@@ -99,12 +102,14 @@ const AppLayout=()=>{
             links
             copyright
         */
-       <div>
+      <Provider store={Store}>
+         <div>
         <HeaderContent></HeaderContent>
        {/* {outlet} */}
        <Outlet></Outlet>
        <Footer/>
        </div>
+      </Provider>
     );
 }
 
@@ -142,7 +147,11 @@ const appRouter = createBrowserRouter([
           element:<Suspense fallback={<Shimmer/>}> 
             <InstaMart/>
           </Suspense>
-        }
+        },
+        {
+          path: "/cart",
+          element: <Cart/>
+        },
       ]
     }
   ]);

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import logoo from "../assets/img/logoo.jpeg";
 import { Link } from "react-router-dom";
+import Cart from "./Cart";
+import { useSelector } from "react-redux";
+import Store from "../utils/Store";
 
 const Heading = () => (
   <Link to="/">
@@ -15,6 +18,9 @@ const Heading = () => (
 const HeaderContent = () => {
   const [isLogin, setLogin] = useState(false);
 
+  const cartItem=useSelector(store=>store.cart.items);
+  console.log(cartItem)
+
   return (
     <div className="flex justify-between items-center bg-gray-300 shadow-lg px-4 py-2">
       <Heading />
@@ -23,7 +29,9 @@ const HeaderContent = () => {
           <Link to="/"><li className="px-2">Home</li></Link>
           <Link to="/about"><li className="px-2">About</li></Link>
           <Link to="/contact"><li className="px-2">Contact</li></Link>
-          <Link to="/instamart"><li className="px-2">Cart</li></Link>
+          
+          <Link to="/instamart"><li className="px-2">InstaMart</li></Link>
+          <Link to="/cart"><li className="px-2">Cart {cartItem.length} items</li></Link> 
         </ul>
       </div>
       <button
