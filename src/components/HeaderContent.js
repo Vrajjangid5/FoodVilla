@@ -8,6 +8,7 @@ import Store from "../utils/Store";
 const Heading = () => (
   <Link to="/">
     <img
+      data-testid="logo"
       alt="logo"
       className="h-28 pl-2"
       src={logoo}
@@ -31,7 +32,7 @@ const HeaderContent = () => {
           <Link to="/contact"><li className="px-2">Contact</li></Link>
           
           <Link to="/instamart"><li className="px-2">InstaMart</li></Link>
-          <Link to="/cart"><li className="px-2">Cart {cartItem.length} items</li></Link> 
+          <Link to="/cart"><li className="px-2" data-testid="cartt">Cart {cartItem.length} items</li></Link> 
         </ul>
       </div>
       <button
